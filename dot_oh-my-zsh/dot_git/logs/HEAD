@@ -1,0 +1,5 @@
+0000000000000000000000000000000000000000 841f3cb0bb7663fa1062ffc59acb7b4581dc1d0f Akecel <axel.rayer@gmail.com> 1638884450 +0100	clone: from https://github.com/ohmyzsh/ohmyzsh.git
+841f3cb0bb7663fa1062ffc59acb7b4581dc1d0f 841f3cb0bb7663fa1062ffc59acb7b4581dc1d0f Akecel <axel.rayer@gmail.com> 1640076110 +0100	checkout: moving from master to master
+841f3cb0bb7663fa1062ffc59acb7b4581dc1d0f 904f8685f75ff5dd3f544f8c6f2cabb8e5952e9a Akecel <axel.rayer@gmail.com> 1640076111 +0100	pull --rebase --stat origin master (start): checkout 904f8685f75ff5dd3f544f8c6f2cabb8e5952e9a
+904f8685f75ff5dd3f544f8c6f2cabb8e5952e9a 904f8685f75ff5dd3f544f8c6f2cabb8e5952e9a Akecel <axel.rayer@gmail.com> 1640076111 +0100	pull --rebase --stat origin master (finish): returning to refs/heads/master
+904f8685f75ff5dd3f544f8c6f2cabb8e5952e9a 904f8685f75ff5dd3f544f8c6f2cabb8e5952e9a Akecel <axel.rayer@gmail.com> 1640076111 +0100	checkout: moving from master to master

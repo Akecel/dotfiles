@@ -1,0 +1,223 @@
+{
+	"name": "better-pest",
+	"displayName": "Better Pest",
+	"description": "A better Pest test runner",
+	"version": "0.1.0",
+	"publisher": "m1guelpf",
+	"engines": {
+		"vscode": "^1.17.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/m1guelpf/better-pest.git"
+	},
+	"icon": "icon.png",
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:better-pest.run",
+		"onCommand:better-pest.run-file",
+		"onCommand:better-pest.run-suite"
+	],
+	"main": "./src/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "better-pest.run",
+				"title": "Better Pest: run"
+			},
+			{
+				"command": "better-pest.run-file",
+				"title": "Better Pest: run file"
+			},
+			{
+				"command": "better-pest.run-suite",
+				"title": "Better Pest: run suite"
+			},
+			{
+				"command": "better-pest.run-previous",
+				"title": "Better Pest: run previous"
+			}
+		],
+		"keybindings": [
+			{
+				"key": "cmd+k cmd+r",
+				"command": "better-pest.run"
+			},
+			{
+				"key": "cmd+k cmd+f",
+				"command": "better-pest.run-file"
+			},
+			{
+				"key": "cmd+k cmd+p",
+				"command": "better-pest.run-previous"
+			}
+		],
+		"configuration": {
+			"title": "Better Pest configuration",
+			"properties": {
+				"better-pest.commandSuffix": {
+					"type": [
+						"string",
+						"null"
+					],
+					"default": null,
+					"description": "This string will be appended to the pest command, it's a great place to add flags like '--stop-on-failure'"
+				},
+				"better-phpunit.pestBinary": {
+					"type": [
+						"string",
+						"null"
+					],
+					"default": null,
+					"description": "A custom pest binary. Ex: 'pest', '/usr/local/bin/pest'"
+				},
+				"better-pest.xmlConfigFilepath": {
+					"type": [
+						"string",
+						"null"
+					],
+					"default": null,
+					"description": "Absolute path for the PHPUnit XML configuration file"
+				},
+				"better-pest.suiteSuffix": {
+					"type": [
+						"string",
+						"null"
+					],
+					"default": null,
+					"description": "Specify options to appended only to the 'run suite' command, for example add options like '--testsuite unit' or '--coverage  --coverage-xml'"
+				},
+				"better-pest.ssh.enable": {
+					"type": "boolean",
+					"default": false,
+					"description": "Run tests over SSH"
+				},
+				"better-pest.ssh.user": {
+					"type": [
+						"string",
+						"null"
+					],
+					"default": null,
+					"description": "The user to connect as when running test via SSH"
+				},
+				"better-pest.ssh.host": {
+					"type": [
+						"string",
+						"null"
+					],
+					"default": null,
+					"description": "The hostname to use when running tests via SSH"
+				},
+				"better-pest.ssh.port": {
+					"type": [
+						"integer"
+					],
+					"default": 22,
+					"description": "The port to use when running tests via SSH.  Deprecated, set better-pest.options to '-p[port]' on Linux/Mac, and '-P [port]' on Windows."
+				},
+				"better-pest.ssh.paths": {
+					"type": "object",
+					"default": {},
+					"description": "The SSH path map. Keys are local (host) paths and values are remote (guest) paths."
+				},
+				"better-pest.ssh.binary": {
+					"type": [
+						"string",
+						"null"
+					],
+					"default": null,
+					"description": "The path (and flags) to an SSH-compatible binary. If null it will use SSH on *nix and Putty on Windows."
+				},
+				"better-pest.ssh.disableAllOptions": {
+					"type": "boolean",
+					"default": false,
+					"description": "Do not include any config options in SSH command."
+				},
+				"better-pest.ssh.options": {
+					"type": [
+						"string",
+						"null"
+					],
+					"default": null,
+					"description": "Additional command line options to pass to ssh/putty/plink"
+				},
+				"better-pest.docker.enable": {
+					"type": "boolean",
+					"default": false,
+					"description": "Run tests within a Docker container"
+				},
+				"better-pest.docker.command": {
+					"type": [
+						"string",
+						"null"
+					],
+					"default": null,
+					"description": "The Docker command to execute a container. If null, an error will be thrown during execution."
+				},
+				"better-pest.docker.paths": {
+					"type": "object",
+					"default": {},
+					"description": "The docker path map. Keys are local (host) paths and values are remote (container) paths."
+				}
+			}
+		},
+		"problemMatchers": [
+			{
+				"name": "pest",
+				"owner": "php",
+				"fileLocation": "absolute",
+				"pattern": [
+					{
+						"regexp": "^\\d+\\)\\s.*$"
+					},
+					{
+						"regexp": "^(.*)$",
+						"message": 1
+					},
+					{
+						"regexp": "^(.*):(\\d+)$",
+						"file": 1,
+						"location": 2
+					}
+				]
+			}
+		],
+		"taskDefinitions": [
+			{
+				"type": "pest",
+				"required": [
+					"task"
+				],
+				"properties": {
+					"task": {
+						"type": "string",
+						"description": "The task to execute"
+					}
+				}
+			}
+		]
+	},
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/mocha": "^2.2.42",
+		"@types/node": "^7.10.2",
+		"eslint": "^4.6.1",
+		"mocha": "^4.1.0",
+		"typescript": "^2.5.2",
+		"vscode": "^1.1.22"
+	},
+	"dependencies": {
+		"find-up": "^2.1.0"
+	},
+	"__metadata": {
+		"id": "8be34a02-fb9e-4be6-9f4d-bac8d7c88aee",
+		"publisherId": "4ae58c42-6c16-4070-8ae5-eef7fa21bbce",
+		"publisherDisplayName": "Miguel Piedrafita",
+		"installedTimestamp": 1633342654199
+	}
+}
