@@ -31,5 +31,7 @@ brew install golang
 # Install utilities
 brew install openssh
 
+brew install pure
+
 # Remove outdated versions from the cellar.
 brew cleanup
